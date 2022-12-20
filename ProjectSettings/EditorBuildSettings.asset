@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Murai/onlinetestResult.unity
+    guid: d798cd24d7931e94eb02b5c4b1b13f2e
+  - enabled: 1
+    path: Assets/Murai/onlinetestgame2.unity
+    guid: fd28afa869e6589489c1f35b9474d0b4
+  - enabled: 1
+    path: Assets/Murai/onlinetestgame.unity
+    guid: 969be45999903604aa3720428439c479
+  - enabled: 1
+    path: Assets/Murai/onlinetestSelect.unity
+    guid: b3624c6afb80f7147b43cf5bb541fe89
   m_configObjects: {}
