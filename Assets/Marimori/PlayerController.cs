@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         // “ü—Í‚ðŽó‚¯Žæ‚é
         h = Input.GetAxis("Horizontal");
         Vector2 dir = new Vector2(h, 0).normalized;
-        //rb.AddForce(Vector2.right * h * Speed, ForceMode2D.Force);
+        //rb.AddForce(Vector2.right * 0 * Speed, ForceMode2D.Force);
         rb.velocity = dir * Speed;
         //if ()
         //{
