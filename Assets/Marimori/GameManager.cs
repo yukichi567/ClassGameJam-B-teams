@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
                 _isGame = false;
                 _PC.Speed = 0;
                 _PC.flipX = false;
-                //_gameover.gameObject.SetActive(true);
+                _gameover.gameObject.SetActive(true);
             } 
             
 

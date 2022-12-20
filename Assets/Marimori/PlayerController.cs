@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
     //体力
     [SerializeField] public float Life = 3f;
     //被弾時クールタイム
-    [SerializeField] public float timer;
+    public float CoolTime = 0f;
+    public float timer;
     //HPバー設定
     [SerializeField] Image MaxLifeImage;
     float MaxHp = 1f;
@@ -34,9 +35,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 入力を受け取る
-        h = Input.GetAxis("Horizontal");
-
         // 各種入力を受け取る
         if (Input.GetKey(KeyCode.Space) && OnField == true) jump = true;
 
@@ -46,13 +44,26 @@ public class PlayerController : MonoBehaviour
         }
 
         timer += Time.deltaTime;
+        CoolTime = 0 - timer;
         MaxLifeImage.GetComponent<Image>().fillAmount = MaxHp;
     }
 
     private void FixedUpdate()
     {
-        rb.AddForce(Vector2.right * h * Speed, ForceMode2D.Force);
+        // 入力を受け取る
+        h = Input.GetAxis("Horizontal");
+        Vector2 dir = new Vector2(h, 0).normalized;
+        //rb.AddForce(Vector2.right * h * Speed, ForceMode2D.Force);
+        rb.velocity = dir * Speed;
+        //if ()
+        //{
+        //    rb.velocity = dir * Speed;
+        //}
+        //else 
+        //{
 
+        //}
+        
         if (jump)
         {
             this.rb.AddForce(transform.up * Jumpforce);
@@ -69,10 +80,11 @@ public class PlayerController : MonoBehaviour
             OnField = true;
         }
 
-        if (timer >= 3 && collision.gameObject.CompareTag("Enemy"))
+        if (CoolTime <= 0 && collision.gameObject.CompareTag("Enemy"))
         {
             Life -= 1;
             timer = 0;
+            CoolTime = 3 - timer;
             MaxHp -= 0.33334f;
         }
 
