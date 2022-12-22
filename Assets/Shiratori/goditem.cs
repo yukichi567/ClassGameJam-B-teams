@@ -9,7 +9,7 @@ public class goditem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerrr = GameObject.Find("player");
+        playerrr = GameObject.Find("Player");
         pc = playerrr.GetComponent<player>();
     }
 

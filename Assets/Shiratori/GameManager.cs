@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager1 : MonoBehaviour
 {
     //ゲーム開始、ゲームオーバースイッチ
     [SerializeField] bool _isGame = true;
@@ -21,12 +21,12 @@ public class GameManager : MonoBehaviour
 
 
     [Header("他script")]
-    PlayerC _PC;
+    PlayerController _PC;
     // Start is called before the first frame update
 
     void Start()
     {
-        _PC = GameObject.FindObjectOfType<PlayerC>();
+        _PC = GameObject.FindObjectOfType<PlayerController>();
         Timetext = GameObject.Find("Time").GetComponent<Text>();
     }
 
