@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 133679770}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 701882743}
+        m_TargetAssemblyTypeName: scene, Assembly-CSharp
+        m_MethodName: LoadScenes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &133679770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +340,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 200072849}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 701882743}
+        m_TargetAssemblyTypeName: scene, Assembly-CSharp
+        m_MethodName: LoadScenes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &200072849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,7 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 3.19, z: -10}
+  m_FollowOffset: {x: 0, y: 5.2, z: -10}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -698,9 +722,8 @@ Transform:
   - {fileID: 1340892101}
   - {fileID: 945487515}
   - {fileID: 200072847}
-  - {fileID: 2136916559}
   m_Father: {fileID: 792338214}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &580504601
 GameObject:
@@ -841,7 +864,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631814208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.30999994, z: -10}
+  m_LocalPosition: {x: -0.5, y: 1.6999998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1063,7 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a9bd795e466784dbaa15731bc278cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _changeScene: 
+  _changeScene: title
 --- !u!1 &724383311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,6 +1476,7 @@ RectTransform:
   m_Children:
   - {fileID: 2016799154}
   - {fileID: 724383312}
+  - {fileID: 2136916559}
   - {fileID: 564954809}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1545,7 +1569,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 945487517}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1028235151}
+        m_TargetAssemblyTypeName: scene, Assembly-CSharp
+        m_MethodName: LoadScenes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &945487517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1708,7 +1744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a9bd795e466784dbaa15731bc278cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _changeScene: 
+  _changeScene: Marimori
 --- !u!1 &1168641459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,7 +2408,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598559805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.30999994, z: -10}
+  m_LocalPosition: {x: -0.5, y: 1.6999998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2922,14 +2958,14 @@ RectTransform:
   m_GameObject: {fileID: 2136916558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.28571427, y: 0.3030303, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 739794188}
   - {fileID: 739460458}
   - {fileID: 133679768}
-  m_Father: {fileID: 564954809}
-  m_RootOrder: 4
+  m_Father: {fileID: 792338214}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
