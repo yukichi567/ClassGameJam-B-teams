@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerKari: MonoBehaviour
 {
     Rigidbody2D rb;
+    Vector2 _velocity;
+    public float _Gravity = 0;
     //à⁄ìÆë¨ìx
     [SerializeField] public float Speed = 0f;
     //ç∂âEì¸óÕïœêîÇà
@@ -28,37 +30,47 @@ public class PlayerController : MonoBehaviour
     float MaxHp = 1f;
     //çUåÇ
     [SerializeField] public float Power = 3f;
-    //goal
-    public bool _goal = false;
+    public bool _attack = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _velocity = Vector2.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        CoolTime = 0 - timer;
+        MaxLifeImage.GetComponent<Image>().fillAmount = MaxHp;
+        
         // äeéÌì¸óÕÇéÛÇØéÊÇÈ
         if (Input.GetKey(KeyCode.Space) && OnField == true) jump = true;
+        if (Input.GetKey(KeyCode.LeftShift)) _attack = true;
         if (flipX)
         {
             FlipX(h);
         }
-
-        timer += Time.deltaTime;
-        CoolTime = 0 - timer;
-        MaxLifeImage.GetComponent<Image>().fillAmount = MaxHp;
     }
 
     private void FixedUpdate()
     {
+
         // ì¸óÕÇéÛÇØéÊÇÈ
         h = Input.GetAxis("Horizontal");
-        
         Vector2 dir = new Vector2(h, 0).normalized;
-        rb.velocity = dir * Speed;
-        
+        //rb.AddForce(Vector2.right * 0 * Speed, ForceMode2D.Force);
+        rb.velocity = _velocity;
+        //rb.velocity = dir * Speed;
+        //if ()
+        //{
+        //    rb.velocity = dir * Speed;
+        //}
+        //else 
+        //{
+
+        //}
 
         if (jump)
         {
@@ -67,8 +79,12 @@ public class PlayerController : MonoBehaviour
             OnField = false;
         }
 
+        if (_attack)
+        {
 
+        }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Field"))
@@ -82,16 +98,6 @@ public class PlayerController : MonoBehaviour
             timer = 0;
             CoolTime = 3 - timer;
             MaxHp -= 0.33334f;
-        }
-
-        if (collision.gameObject.CompareTag("Field"))
-        {
-            OnField = true;
-        }
-
-        if (collision.gameObject.CompareTag("goal"))
-        {
-            _goal = true;
         }
 
     }

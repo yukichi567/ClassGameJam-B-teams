@@ -5,7 +5,7 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
     float speed;
-    public float sp; 
+    public float sp;
     float ho;
     public bool G_mode; //‚±‚± 
     Rigidbody2D rb;

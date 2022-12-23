@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class Manager : MonoBehaviour
 {
+
     //ゲーム開始、ゲームオーバースイッチ
     [SerializeField] bool _isGame = true;
 
-    [SerializeField][Header("経過時間")]
+    [SerializeField]
+    [Header("経過時間")]
     public float timer;
     [SerializeField]
     Text Timetext;
@@ -19,14 +21,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject _gameclear;
 
-
     [Header("他script")]
     PlayerController _PC;
+
     // Start is called before the first frame update
 
     void Start()
     {
         _PC = GameObject.FindObjectOfType<PlayerController>();
+
         Timetext = GameObject.Find("Time").GetComponent<Text>();
     }
 
@@ -35,7 +38,7 @@ public class GameManager : MonoBehaviour
     {
 
         if (_isGame)
-        {            
+        {
             timer += Time.deltaTime;
             Timetext.text = $"{timer.ToString("F1")}";
 
@@ -46,8 +49,15 @@ public class GameManager : MonoBehaviour
                 _PC.Speed = 0;
                 _PC.flipX = false;
                 _gameover.gameObject.SetActive(true);
-            } 
-            
+            }
+
+            if(_PC._goal == true)
+            {
+                _isGame = false;
+                _PC.Speed = 0;
+                _PC.flipX = false;
+                _gameclear.gameObject.SetActive(true);
+            }
 
         }
     }

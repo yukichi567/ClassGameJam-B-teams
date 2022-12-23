@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerC : MonoBehaviour
 {
     Rigidbody2D rb;
     //移動速度
@@ -26,21 +26,28 @@ public class PlayerController : MonoBehaviour
     //HPバー設定
     [SerializeField] Image MaxLifeImage;
     float MaxHp = 1f;
-    //攻撃
-    [SerializeField] public float Power = 3f;
-    //goal
-    public bool _goal = false;
     // Start is called before the first frame update
+    public bool G_mode;
+    float speed;
+    public float sp;
+    float tmer;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        tmer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         // 各種入力を受け取る
-        if (Input.GetKey(KeyCode.Space) && OnField == true) jump = true;
+        if (Input.GetKeyDown(KeyCode.Space) && OnField == true)
+        {
+            jump = true;
+        }
+            
+
         if (flipX)
         {
             FlipX(h);
@@ -49,20 +56,42 @@ public class PlayerController : MonoBehaviour
         timer += Time.deltaTime;
         CoolTime = 0 - timer;
         MaxLifeImage.GetComponent<Image>().fillAmount = MaxHp;
+        rb.velocity = new Vector2(speed, rb.velocity.y);
+
+        if (G_mode)　//　関数の呼び出し
+        {
+            GM();
+        }
+    }
+    void GM()// 無敵時の処理
+    {
+        tmer = tmer + Time.deltaTime;
+        if (tmer > 2.0f)
+        {
+            G_mode = false;
+            tmer = 0;
+        }
     }
 
     private void FixedUpdate()
     {
         // 入力を受け取る
         h = Input.GetAxis("Horizontal");
-        
         Vector2 dir = new Vector2(h, 0).normalized;
+        //rb.AddForce(Vector2.right * h * Speed, ForceMode2D.Force);
         rb.velocity = dir * Speed;
-        
+        //if ()
+        //{
+        //    rb.velocity = dir * Speed;
+        //}
+        //else 
+        //{
 
+        //}
+        
         if (jump)
         {
-            this.rb.AddForce(transform.up * Jumpforce);
+            this.rb.AddForce(Vector3.up * Jumpforce, ForceMode2D.Impulse);
             jump = false;
             OnField = false;
         }
@@ -78,20 +107,11 @@ public class PlayerController : MonoBehaviour
 
         if (CoolTime <= 0 && collision.gameObject.CompareTag("Enemy"))
         {
+            G_mode = true;
             Life -= 1;
             timer = 0;
             CoolTime = 3 - timer;
             MaxHp -= 0.33334f;
-        }
-
-        if (collision.gameObject.CompareTag("Field"))
-        {
-            OnField = true;
-        }
-
-        if (collision.gameObject.CompareTag("goal"))
-        {
-            _goal = true;
         }
 
     }

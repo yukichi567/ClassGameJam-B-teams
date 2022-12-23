@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController2: MonoBehaviour
 {
+    //重力
     Rigidbody2D rb;
+    Vector2 _velocity;
     //移動速度
     [SerializeField] public float Speed = 0f;
     //左右入力変数ｈ
@@ -28,12 +30,13 @@ public class PlayerController : MonoBehaviour
     float MaxHp = 1f;
     //攻撃
     [SerializeField] public float Power = 3f;
-    //goal
-    public bool _goal = false;
+    public bool _attack = false;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _velocity = Vector2.zero;
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         // 各種入力を受け取る
         if (Input.GetKey(KeyCode.Space) && OnField == true) jump = true;
+        if (Input.GetKey(KeyCode.LeftShift) ) _attack = true;
         if (flipX)
         {
             FlipX(h);
@@ -49,28 +53,40 @@ public class PlayerController : MonoBehaviour
         timer += Time.deltaTime;
         CoolTime = 0 - timer;
         MaxLifeImage.GetComponent<Image>().fillAmount = MaxHp;
+        _velocity.y += 0.1f * Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
         // 入力を受け取る
         h = Input.GetAxis("Horizontal");
-        
         Vector2 dir = new Vector2(h, 0).normalized;
+        //rb.AddForce(Vector2.right * 0 * Speed, ForceMode2D.Force);
         rb.velocity = dir * Speed;
-        
+        //if ()
+        //{
+        //    rb.velocity = dir * Speed;
+        //}
+        //else 
+        //{
 
+        //}
+        
         if (jump)
         {
             this.rb.AddForce(transform.up * Jumpforce);
             jump = false;
             OnField = false;
         }
+        if(_attack)
+        {
 
+        }
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        rb.velocity = _velocity;
         if (collision.gameObject.CompareTag("Field"))
         {
             OnField = true;
@@ -82,16 +98,6 @@ public class PlayerController : MonoBehaviour
             timer = 0;
             CoolTime = 3 - timer;
             MaxHp -= 0.33334f;
-        }
-
-        if (collision.gameObject.CompareTag("Field"))
-        {
-            OnField = true;
-        }
-
-        if (collision.gameObject.CompareTag("goal"))
-        {
-            _goal = true;
         }
 
     }
