@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float Power = 3f;
     //goal
     public bool _goal = false;
+    public bool _fals = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -94,9 +95,13 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("goal"))
         {
-            _goal = true;
+            _goal = true;            
         }
 
+        if (collision.gameObject.CompareTag("kiken"))
+        {
+            _fals = true;
+        }
     }
     void FlipX(float horizontal)
     {

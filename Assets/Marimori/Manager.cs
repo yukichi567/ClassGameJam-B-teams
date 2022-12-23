@@ -43,12 +43,12 @@ public class Manager : MonoBehaviour
             Timetext.text = $"{timer.ToString("F1")}";
 
 
-            if (_PC.Life <= 0)
+            if (_PC.Life <= 0 || _PC._fals == true)
             {
                 _isGame = false;
                 _PC.Speed = 0;
                 _PC.flipX = false;
-                _gameover.gameObject.SetActive(true);
+                _gameover.gameObject.SetActive(true);               
             }
 
             if(_PC._goal == true)
