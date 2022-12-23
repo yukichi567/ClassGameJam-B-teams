@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     float MaxHp = 1f;
     //çUåÇ
     [SerializeField] public float Power = 3f;
-
+    //goal
+    public bool _goal = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,18 +55,11 @@ public class PlayerController : MonoBehaviour
     {
         // ì¸óÕÇéÛÇØéÊÇÈ
         h = Input.GetAxis("Horizontal");
-        Vector2 dir = new Vector2(h, 0).normalized;
-        //rb.AddForce(Vector2.right * 0 * Speed, ForceMode2D.Force);
-        rb.velocity = dir * Speed;
-        //if ()
-        //{
-        //    rb.velocity = dir * Speed;
-        //}
-        //else 
-        //{
-
-        //}
         
+        Vector2 dir = new Vector2(h, 0).normalized;
+        rb.velocity = dir * Speed;
+        
+
         if (jump)
         {
             this.rb.AddForce(transform.up * Jumpforce);
@@ -88,6 +82,16 @@ public class PlayerController : MonoBehaviour
             timer = 0;
             CoolTime = 3 - timer;
             MaxHp -= 0.33334f;
+        }
+
+        if (collision.gameObject.CompareTag("Field"))
+        {
+            OnField = true;
+        }
+
+        if (collision.gameObject.CompareTag("goal"))
+        {
+            _goal = true;
         }
 
     }
