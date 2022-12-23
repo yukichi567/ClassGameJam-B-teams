@@ -44,7 +44,7 @@ public class PlayerKari: MonoBehaviour
         timer += Time.deltaTime;
         CoolTime = 0 - timer;
         MaxLifeImage.GetComponent<Image>().fillAmount = MaxHp;
-        _velocity.y +=(_Gravity * 9.8f) * Time.deltaTime;
+        
         // ŠeŽí“ü—Í‚ðŽó‚¯Žæ‚é
         if (Input.GetKey(KeyCode.Space) && OnField == true) jump = true;
         if (Input.GetKey(KeyCode.LeftShift)) _attack = true;
