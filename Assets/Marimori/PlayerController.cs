@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
     public float CoolTime = 0f;
     public float timer;
     //HPÉoÅ[ê›íË
-    [SerializeField] Image MaxLifeImage;
-    float MaxHp = 1f;
+    //[SerializeField] Image MaxLifeImage;
+    //float MaxHp = 1f;
     //çUåÇ
     [SerializeField] public float Power = 3f;
     //goal
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
         timer += Time.deltaTime;
         CoolTime = 0 - timer;
-        MaxLifeImage.GetComponent<Image>().fillAmount = MaxHp;
+        //MaxLifeImage.GetComponent<Image>().fillAmount = MaxHp;
     }
 
     private void FixedUpdate()
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             Life -= 1;
             timer = 0;
             CoolTime = 3 - timer;
-            MaxHp -= 0.33334f;
+           // MaxHp -= 0.33334f;
         }
 
         if (collision.gameObject.CompareTag("Field"))
