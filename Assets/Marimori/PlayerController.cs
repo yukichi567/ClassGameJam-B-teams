@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     //移動速度
     [SerializeField] public float Speed = 0f;
+    //重力速度
+    [SerializeField] public float gravity;
+    public float Gtime = 0.1f;
     //左右入力変数ｈ
     float h;
     //ジャンプ力
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         // 各種入力を受け取る
         if (Input.GetKey(KeyCode.Space) && OnField == true) jump = true;
+
         if (flipX)
         {
             FlipX(h);
@@ -54,19 +58,18 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // 入力を受け取る
-        h = Input.GetAxis("Horizontal");
-        
-        Vector2 dir = new Vector2(h, 0).normalized;
-        rb.velocity = dir * Speed;
+        float h = Input.GetAxis("Horizontal");
+        Vector2 dir = new Vector2(h, 0 ).normalized;
+        rb.AddForce( dir * Speed,0);
         
 
         if (jump)
         {
-            this.rb.AddForce(transform.up * Jumpforce);
+            this.rb.AddForce(transform.up * Jumpforce);        
             jump = false;
             OnField = false;
-        }
 
+        }
 
     }
     private void OnCollisionEnter2D(Collision2D collision)

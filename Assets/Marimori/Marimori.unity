@@ -864,7 +864,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631814208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 1.6999998, z: -10}
+  m_LocalPosition: {x: -0.77, y: 3.6899998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -886,6 +886,7 @@ GameObject:
   - component: {fileID: 656586221}
   - component: {fileID: 656586222}
   - component: {fileID: 656586223}
+  - component: {fileID: 656586224}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -969,7 +970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656586216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -3.5, z: 0}
+  m_LocalPosition: {x: -0.77, y: -1.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -990,8 +991,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaed8215164d1fd41b3e504343911efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 20
-  Jumpforce: 800
+  Speed: 5
+  gravity: 0
+  Gtime: 0.1
+  Jumpforce: 250
   OnField: 0
   jump: 0
   flipX: 1
@@ -1021,7 +1024,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!95 &656586223
 Animator:
   serializedVersion: 4
@@ -1042,6 +1045,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &656586224
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656586216}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
 --- !u!1 &701882741
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,7 +2427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598559805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 1.6999998, z: -10}
+  m_LocalPosition: {x: -0.77, y: 3.6899998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2653,6 +2672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 20
+  gravity: 0
+  Gtime: 0.1
   Jumpforce: 800
   OnField: 0
   jump: 0
@@ -2760,8 +2781,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73591156d0340042b7e89ea218099ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  _velocity: {x: 0, y: 0}
   _Gravity: 1
   Speed: 20
+  h: 0
   Jumpforce: 800
   OnField: 0
   jump: 0
@@ -2770,6 +2794,7 @@ MonoBehaviour:
   CoolTime: 0
   timer: 0
   MaxLifeImage: {fileID: 0}
+  MaxHp: 1
   Power: 3
   _attack: 0
 --- !u!1 &2016799153
