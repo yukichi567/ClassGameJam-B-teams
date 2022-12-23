@@ -42,10 +42,6 @@ public class Result : MonoBehaviour
         {
             BestRecord = PlayerPrefs.GetFloat("Time4", 0);
         }
-        if (StageNumber.ThisSt == 5)
-        {
-            BestRecord = PlayerPrefs.GetFloat("Time5", 0);
-        }
         Clearminutes = (int)ClearRecord / 60;
         ClearSecond = (int)ClearRecord % 60;
         Bestminutes = (int)BestRecord / 60;
@@ -87,14 +83,6 @@ public class Result : MonoBehaviour
                 PlayerPrefs.Save();
             }
         }
-        if (StageNumber.ThisSt == 5)
-        {
-            if (BestRecord > ClearRecord || BestRecord == 0)
-            {
-                PlayerPrefs.SetFloat("Time5", ClearRecord);
-                PlayerPrefs.Save();
-            }
-        }
     }
     
     void Update()
@@ -103,7 +91,7 @@ public class Result : MonoBehaviour
         {
             if (Select == 1)
             {
-                Select = 5;
+                Select = 4;
             }
             else
             {
@@ -112,7 +100,7 @@ public class Result : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            if (Select == 5)
+            if (Select == 4)
             {
                 Select = 1;
             }

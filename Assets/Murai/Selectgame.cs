@@ -12,7 +12,7 @@ public class Selectgame : MonoBehaviour
     public int minutes = 0;
     [SerializeField] public Text StageText;
     [SerializeField] public Text BestText;
-    [SerializeField] int MaxSt = 5; //現在の全ステージ数を入れてほしいです
+    [SerializeField] int MaxSt = 4; //現在の全ステージ数を入れてほしいです
     
     void Start()
     {
@@ -126,6 +126,7 @@ public class Selectgame : MonoBehaviour
                 SceneManager.LoadScene("");
             }
         }
+        //ベストレコードの削除
         if (Input.GetKeyDown(KeyCode.P))
         {
             PlayerPrefs.DeleteAll();
