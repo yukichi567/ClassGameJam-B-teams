@@ -9,34 +9,25 @@ EditorUserSettings:
       value: 5a0251565153590e0f0b5d7443740e4444161b727a7171697f7f4836b6b4643c
       flags: 0
     RecentlyUsedSceneGuid-1:
-<<<<<<< HEAD
       value: 5601025355065b0c595c0e7743760a4447161a2c7a2970642c7a4567e0b46d61
       flags: 0
     RecentlyUsedSceneGuid-2:
-      value: 0702075550075d0e09565c7144760d4417151a2f7e7c7061747a4c6ab3b6616e
-      flags: 0
-    RecentlyUsedSceneGuid-3:
       value: 5750070003020d595b5a5c7b482007444e4e1d737d717066297a1b36b5b26061
       flags: 0
-    RecentlyUsedSceneGuid-4:
-=======
-      value: 5504025f03020c0a5c5d09231373594415161d7b7e7c77637c7f4f67b1b6673d
-      flags: 0
-    RecentlyUsedSceneGuid-2:
-      value: 5601025355065b0c595c0e7743760a4447161a2c7a2970642c7a4567e0b46d61
-      flags: 0
     RecentlyUsedSceneGuid-3:
-      value: 50530056010750080e0f0d7447270744454f1d737a7c7f607b711835b7b26768
+      value: 070602520751580f095e5b7a16700b441016412c752d7f65782b4c66bab9603e
       flags: 0
     RecentlyUsedSceneGuid-4:
-      value: 5a0251565153590e0f0b5d7443740e4444161b727a7171697f7f4836b6b4643c
-      flags: 0
-    RecentlyUsedSceneGuid-5:
->>>>>>> origin/Marimori
-      value: 070602520751580f095e5b7a16700b441016412c752d7f65782b4c66bab9603e
+      value: 50530056010750080e0f0d7447270744454f1d737a7c7f607b711835b7b26768
       flags: 0
     RecentlyUsedSceneGuid-5:
       value: 5703000703065f0c0c57557616205a4440154a2f7c2a76312b7b1e61e4b36d3c
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 0702075550075d0e09565c7144760d4417151a2f7e7c7061747a4c6ab3b6616e
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 53095252035751095b0a592714775c44424f1b7d757876342b2f1f6be4b5373b
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650
