@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerKari: MonoBehaviour
 {
     Rigidbody2D rb;
+    Vector2 _velocity;
+    public float _Gravity = 0;
     //ˆÚ“®‘¬“x
     [SerializeField] public float Speed = 0f;
     //¶‰E“ü—Í•Ï”‚ˆ
@@ -28,35 +30,39 @@ public class PlayerController : MonoBehaviour
     float MaxHp = 1f;
     //UŒ‚
     [SerializeField] public float Power = 3f;
-
+    public bool _attack = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _velocity = Vector2.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        CoolTime = 0 - timer;
+        MaxLifeImage.GetComponent<Image>().fillAmount = MaxHp;
+        _velocity.y +=(_Gravity * 9.8f) * Time.deltaTime;
         // Šeí“ü—Í‚ğó‚¯æ‚é
         if (Input.GetKey(KeyCode.Space) && OnField == true) jump = true;
+        if (Input.GetKey(KeyCode.LeftShift)) _attack = true;
         if (flipX)
         {
             FlipX(h);
         }
-
-        timer += Time.deltaTime;
-        CoolTime = 0 - timer;
-        MaxLifeImage.GetComponent<Image>().fillAmount = MaxHp;
     }
 
     private void FixedUpdate()
     {
+
         // “ü—Í‚ğó‚¯æ‚é
         h = Input.GetAxis("Horizontal");
         Vector2 dir = new Vector2(h, 0).normalized;
         //rb.AddForce(Vector2.right * 0 * Speed, ForceMode2D.Force);
-        rb.velocity = dir * Speed;
+        rb.velocity = _velocity;
+        //rb.velocity = dir * Speed;
         //if ()
         //{
         //    rb.velocity = dir * Speed;
@@ -65,7 +71,7 @@ public class PlayerController : MonoBehaviour
         //{
 
         //}
-        
+
         if (jump)
         {
             this.rb.AddForce(transform.up * Jumpforce);
@@ -73,8 +79,12 @@ public class PlayerController : MonoBehaviour
             OnField = false;
         }
 
+        if (_attack)
+        {
 
+        }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Field"))

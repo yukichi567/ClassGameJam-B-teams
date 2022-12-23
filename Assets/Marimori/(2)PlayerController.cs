@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController2: MonoBehaviour
 {
+    //重力
     Rigidbody2D rb;
+    Vector2 _velocity;
     //移動速度
     [SerializeField] public float Speed = 0f;
     //左右入力変数ｈ
@@ -28,11 +30,13 @@ public class PlayerController : MonoBehaviour
     float MaxHp = 1f;
     //攻撃
     [SerializeField] public float Power = 3f;
+    public bool _attack = false;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _velocity = Vector2.zero;
     }
 
     // Update is called once per frame
@@ -40,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         // 各種入力を受け取る
         if (Input.GetKey(KeyCode.Space) && OnField == true) jump = true;
+        if (Input.GetKey(KeyCode.LeftShift) ) _attack = true;
         if (flipX)
         {
             FlipX(h);
@@ -48,6 +53,7 @@ public class PlayerController : MonoBehaviour
         timer += Time.deltaTime;
         CoolTime = 0 - timer;
         MaxLifeImage.GetComponent<Image>().fillAmount = MaxHp;
+        _velocity.y += 0.1f * Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -72,11 +78,15 @@ public class PlayerController : MonoBehaviour
             jump = false;
             OnField = false;
         }
+        if(_attack)
+        {
 
+        }
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        rb.velocity = _velocity;
         if (collision.gameObject.CompareTag("Field"))
         {
             OnField = true;
